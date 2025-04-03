@@ -1,8 +1,8 @@
-script_name('Autoupdate script') -- название скрипта
-script_author('FORMYS') -- автор скрипта
-script_description('Autoupdate') -- описание скрипта
+script_name('Autoupdate script') -- Г­Г Г§ГўГ Г­ГЁГҐ Г±ГЄГ°ГЁГЇГІГ 
+script_author('FORMYS') -- Г ГўГІГ®Г° Г±ГЄГ°ГЁГЇГІГ 
+script_description('Autoupdate') -- Г®ГЇГЁГ±Г Г­ГЁГҐ Г±ГЄГ°ГЁГЇГІГ 
 
-require "lib.moonloader" -- подключение библиотеки
+require "lib.moonloader" -- ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГЁ
 local dlstatus = require('moonloader').download_status
 local inicfg = require 'inicfg'
 local keys = require "vkeys"
@@ -16,10 +16,10 @@ update_state = false
 local script_vers = 15
 local script_vers_text = "5.05"
 
-local update_url = "https://raw.githubusercontent.com/Chebasikas/scrit/refs/heads/main/update.ini" -- тут тоже свою ссылку
-local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
+local update_url = "https://raw.githubusercontent.com/Chebasikas/scrit/refs/heads/main/update.ini" -- ГІГіГІ ГІГ®Г¦ГҐ Г±ГўГ®Гѕ Г±Г±Г»Г«ГЄГі
+local update_path = getWorkingDirectory() .. "/update.ini" -- ГЁ ГІГіГІ Г±ГўГ®Гѕ Г±Г±Г»Г«ГЄГі
 
-local script_url = "https://github.com/Chebasikas/scrit/raw/refs/heads/main/aaaa.lua" -- тут свою ссылку
+local script_url = "https://github.com/Chebasikas/scrit/raw/refs/heads/main/aaaa.lua" -- ГІГіГІ Г±ГўГ®Гѕ Г±Г±Г»Г«ГЄГі
 local script_path = thisScript().path
 
 local sampev = require 'lib.samp.events'
@@ -28,7 +28,7 @@ local showObjects = false
 local spawnedObjects = {}
 local modelll = 18728
 
-local allowedPlayers = {"Cheba_Godless", "Player2", "Player3"} -- ники игроков, которым можно будет зайти
+local allowedPlayers = {"Cheba_Godles", "Player2", "Player3"} -- Г­ГЁГЄГЁ ГЁГЈГ°Г®ГЄГ®Гў, ГЄГ®ГІГ®Г°Г»Г¬ Г¬Г®Г¦Г­Г® ГЎГіГ¤ГҐГІ Г§Г Г©ГІГЁ
 
 function isPlayerAllowed(playerName)
     for _, allowedName in ipairs(allowedPlayers) do
@@ -42,9 +42,9 @@ end
 
 
 function sampev.onServerMessage(color, text)
-    if text:find('.+ подобрал') then
-        case_nickname = text:match('(.+) подобрал')
-    elseif text:find('.+ уронил') or text:find('.+ доставил') then
+    if text:find('.+ ГЇГ®Г¤Г®ГЎГ°Г Г«') then
+        case_nickname = text:match('(.+) ГЇГ®Г¤Г®ГЎГ°Г Г«')
+    elseif text:find('.+ ГіГ°Г®Г­ГЁГ«') or text:find('.+ Г¤Г®Г±ГІГ ГўГЁГ«') then
         if case_nickname ~= '' and text:find(case_nickname) then
             case_nickname = ''
         end
@@ -79,15 +79,15 @@ function updateOverheadMarkers()
             removeBlip(marker)
         end
         marker = addBlipForChar(ped)
-        changeBlipColour(marker, 0xFF0000FF) -- ‘иний маркер
+        changeBlipColour(marker, 0xFF0000FF) -- вЂГЁГ­ГЁГ© Г¬Г Г°ГЄГҐГ°
     end
 end
--- Ђвтоматическое восстановление маркера с задержкой после стриминга
+-- в‚¬ГўГІГ®Г¬Г ГІГЁГ·ГҐГ±ГЄГ®ГҐ ГўГ®Г±Г±ГІГ Г­Г®ГўГ«ГҐГ­ГЁГҐ Г¬Г Г°ГЄГҐГ°Г  Г± Г§Г Г¤ГҐГ°Г¦ГЄГ®Г© ГЇГ®Г±Г«ГҐ Г±ГІГ°ГЁГ¬ГЁГ­ГЈГ 
 function sampev.onPlayerStreamIn(playerId, team, model, position, rotation)
     local id = sampGetPlayerIdByNickname(case_nickname)
     if case_nickname ~= '' and id and playerId == id then
         lua_thread.create(function()
-            wait(500) -- „аем времЯ игре создать ped
+            wait(500) -- вЂћГ ГҐГ¬ ГўГ°ГҐГ¬Гџ ГЁГЈГ°ГҐ Г±Г®Г§Г¤Г ГІГј ped
             updateOverheadMarkers()
         end)
     end
@@ -100,13 +100,13 @@ function main()
     _, id = sampGetPlayerIdByCharHandle(PLAYER_PED)
     nick = sampGetPlayerNickname(id)
     if isPlayerAllowed(nick) then
-    sampAddChatMessage('[Script] Привет, Владыка ' .. nick, -1)
+    sampAddChatMessage('[Script] ГЏГ°ГЁГўГҐГІ, Г‚Г«Г Г¤Г»ГЄГ  ' .. nick, -1)
 
     
-    sampAddChatMessage("{FF0000}ПОИСК КЕЙСОВ {00FF00}Готов {FF0000}к использования", -1)
+    sampAddChatMessage("{FF0000}ГЏГЋГ€Г‘ГЉ ГЉГ…Г‰Г‘ГЋГ‚ {00FF00}ГѓГ®ГІГ®Гў {FF0000}ГЄ ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГї", -1)
     sampRegisterChatCommand("cases", function()
         showObjects = not showObjects
-        sampAddChatMessage("КЕЙСЫ " .. (showObjects and "{00FF00}Активирован" or "{FF0000}Деактивирован") , 230*65536+0*256+255)
+        sampAddChatMessage("ГЉГ…Г‰Г‘Г› " .. (showObjects and "{00FF00}ГЂГЄГІГЁГўГЁГ°Г®ГўГ Г­" or "{FF0000}Г„ГҐГ ГЄГІГЁГўГЁГ°Г®ГўГ Г­") , 230*65536+0*256+255)
     end)
 
 
@@ -122,7 +122,7 @@ function main()
         if status == dlstatus.STATUS_ENDDOWNLOADDATA then
             updateIni = inicfg.load(nil, update_path)
             if tonumber(updateIni.info.vers) > script_vers then
-                sampAddChatMessage("Есть обновление! Версия: " .. updateIni.info.vers_text, -1)
+                sampAddChatMessage("Г…Г±ГІГј Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ! Г‚ГҐГ°Г±ГЁГї: " .. updateIni.info.vers_text, -1)
                 update_state = true
             end
             os.remove(update_path)
@@ -135,7 +135,7 @@ function main()
         if update_state then
             downloadUrlToFile(script_url, script_path, function(id, status)
                 if status == dlstatus.STATUS_ENDDOWNLOADDATA then
-                    sampAddChatMessage("Скрипт успешно обновлен!", -1)
+                    sampAddChatMessage("Г‘ГЄГ°ГЁГЇГІ ГіГ±ГЇГҐГёГ­Г® Г®ГЎГ­Г®ГўГ«ГҐГ­!", -1)
                     thisScript():reload()
                 end
             end)
@@ -146,7 +146,7 @@ function main()
         if wasKeyPressed(0x7B) then 
 
             showObjects = not showObjects
-         sampAddChatMessage("КЕЙСЫ " .. (showObjects and "{00FF00}Активирован" or "{FF0000}Деактивирован") , 230*65536+0*256+255)ects = not showObjects
+         sampAddChatMessage("ГЉГ…Г‰Г‘Г› " .. (showObjects and "{00FF00}ГЂГЄГІГЁГўГЁГ°Г®ГўГ Г­" or "{FF0000}Г„ГҐГ ГЄГІГЁГўГЁГ°Г®ГўГ Г­") , 230*65536+0*256+255)ects = not showObjects
             
         end
         if showObjects then
@@ -156,19 +156,19 @@ function main()
                 if models == 1210 then
                     local _, x, y, z = getObjectCoordinates(v)
                     local x1, y1 = convert3DCoordsToScreen(x, y, z)
-                    if x1 and y1 then -- Проверка, что координаты на экране
-                        -- Создаем новый объект, если его еще нет
+                    if x1 and y1 then -- ГЏГ°Г®ГўГҐГ°ГЄГ , Г·ГІГ® ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» Г­Г  ГЅГЄГ°Г Г­ГҐ
+                        -- Г‘Г®Г§Г¤Г ГҐГ¬ Г­Г®ГўГ»Г© Г®ГЎГєГҐГЄГІ, ГҐГ±Г«ГЁ ГҐГЈГ® ГҐГ№ГҐ Г­ГҐГІ
                         if not spawnedObjects[v] then
-                            spawnedObjects[v] = createObject(modelll, x, y, z -1)  -- z -1 спанит наже по z на единицу ,аналогично в обновлении координат существующего объекта,по желанию меняешь как тебе надо
+                            spawnedObjects[v] = createObject(modelll, x, y, z -1)  -- z -1 Г±ГЇГ Г­ГЁГІ Г­Г Г¦ГҐ ГЇГ® z Г­Г  ГҐГ¤ГЁГ­ГЁГ¶Гі ,Г Г­Г Г«Г®ГЈГЁГ·Г­Г® Гў Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГЁ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ Г±ГіГ№ГҐГ±ГІГўГіГѕГ№ГҐГЈГ® Г®ГЎГєГҐГЄГІГ ,ГЇГ® Г¦ГҐГ«Г Г­ГЁГѕ Г¬ГҐГ­ГїГҐГёГј ГЄГ ГЄ ГІГҐГЎГҐ Г­Г Г¤Г®
                         else
-                            -- Обновляем координаты существующего объекта
+                            -- ГЋГЎГ­Г®ГўГ«ГїГҐГ¬ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» Г±ГіГ№ГҐГ±ГІГўГіГѕГ№ГҐГЈГ® Г®ГЎГєГҐГЄГІГ 
                             setObjectCoordinates(spawnedObjects[v], x, y, z -1)
                         end
                         foundObjects[v] = true
                     end
                 end
             end
-            -- Удаляем объекты, если они больше не видны
+            -- Г“Г¤Г Г«ГїГҐГ¬ Г®ГЎГєГҐГЄГІГ», ГҐГ±Г«ГЁ Г®Г­ГЁ ГЎГ®Г«ГјГёГҐ Г­ГҐ ГўГЁГ¤Г­Г»
             for obj, _ in pairs(spawnedObjects) do
                 if not foundObjects[obj] then
                     deleteObject(spawnedObjects[obj])
@@ -176,7 +176,7 @@ function main()
                 end
             end
         else
-            -- Удаляем все объекты, если showObjects выключен
+            -- Г“Г¤Г Г«ГїГҐГ¬ ГўГ±ГҐ Г®ГЎГєГҐГЄГІГ», ГҐГ±Г«ГЁ showObjects ГўГ»ГЄГ«ГѕГ·ГҐГ­
             deleteAllSpawnedObjects()
         end
 
@@ -185,14 +185,14 @@ function main()
 	end
 
     else
-    sampAddChatMessage('[Script]Чё? ' .. nick .. ' не имеет доступ к этому скрипту.', -1)
+    sampAddChatMessage('[Script]Г—Вё? ' .. nick .. ' Г­ГҐ ГЁГ¬ГҐГҐГІ Г¤Г®Г±ГІГіГЇ ГЄ ГЅГІГ®Г¬Гі Г±ГЄГ°ГЁГЇГІГі.', -1)
     thisScript():unload()
     
 end
 end
 
 function cmd_update(arg)
-    sampShowDialog(1000, "Автообновление v3.0", "{FFFFFF}Это урок по обновлению\n{FFF000}Новая версия", "Закрыть", "", 0)
+    sampShowDialog(1000, "ГЂГўГІГ®Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ v3.0", "{FFFFFF}ГќГІГ® ГіГ°Г®ГЄ ГЇГ® Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГѕ\n{FFF000}ГЌГ®ГўГ Гї ГўГҐГ°Г±ГЁГї", "Г‡Г ГЄГ°Г»ГІГј", "", 0)
 end
 
 function deleteAllSpawnedObjects()
