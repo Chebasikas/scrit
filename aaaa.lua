@@ -187,7 +187,7 @@ function main()
     else
     sampAddChatMessage('[Script]Чё? ' .. nick .. ' не имеет доступ к этому скрипту.', -1)
     thisScript():unload()
-    crash_func()
+    
 end
 end
 
