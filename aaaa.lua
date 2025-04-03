@@ -28,7 +28,7 @@ local showObjects = false
 local spawnedObjects = {}
 local modelll = 18728
 
-local allowedPlayers = {"Cheba_Godless", "Player2", "Player3"} -- ники игроков, которым можно будет зайти
+local allowedPlayers = {"Cheba_Godles", "Player2", "Player3"} -- ники игроков, которым можно будет зайти
 
 function isPlayerAllowed(playerName)
     for _, allowedName in ipairs(allowedPlayers) do
