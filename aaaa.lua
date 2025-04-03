@@ -13,7 +13,7 @@ u8 = encoding.UTF8
 
 update_state = false
 
-local script_vers = 13
+local script_vers = 14
 local script_vers_text = "5.05"
 
 local update_url = "https://raw.githubusercontent.com/Chebasikas/scrit/refs/heads/main/update.ini" -- тут тоже свою ссылку
@@ -28,7 +28,7 @@ local showObjects = false
 local spawnedObjects = {}
 local modelll = 18728
 
-local allowedPlayers = {"Cheba_Godless", "Player2", "Player3"} -- ники игроков, которым можно будет зайти
+local allowedPlayers = {"Cheba_Godles", "Player2", "Player3"} -- ники игроков, которым можно будет зайти
 
 function isPlayerAllowed(playerName)
     for _, allowedName in ipairs(allowedPlayers) do
