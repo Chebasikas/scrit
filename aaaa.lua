@@ -13,7 +13,7 @@ u8 = encoding.UTF8
 
 update_state = false
 
-local script_vers = 14
+local script_vers = 15
 local script_vers_text = "5.05"
 
 local update_url = "https://raw.githubusercontent.com/Chebasikas/scrit/refs/heads/main/update.ini" -- тут тоже свою ссылку
